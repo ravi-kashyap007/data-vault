@@ -5,11 +5,9 @@ $blue:#2754CE;
 $orange:#FF7100;
 $Text-color:#8493A8;
 
-
 .mat-card-header .mat-card-title {
     font-size: 1.7rem;
     margin-bottom: 18px;
-    color: $Text-color;
 }
 .login-wrapper{
     height:100%;
@@ -30,21 +28,12 @@ mat-card {
 mat-form-field {
     display: block;
 }
-.mat-form-field-flex mat-form-field{
-    background: #FFFFFF;
-    border: 1px solid #E9ECF4;
-    border-radius: 6px;
-    font-family: Nunito;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 12px;
-    color: #564F4F;
-}
+
 .vault-btn{
     background: $blue;
-    border-radius: 6px;
     border: 1px solid $blue;
     box-sizing: border-box;
+    border-radius: 6px;
     color: $white;
 }
 .vault-btn:hover{

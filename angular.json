@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "data-vault"
+    }
+  },
+  "defaultProject": "data-vault",
+  "cli": {
+    "analytics": "ef25969d-e4d1-4b71-9607-2b5f2b0d077e"
+  }
 }
