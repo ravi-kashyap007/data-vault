@@ -70,6 +70,16 @@ export class AuthenticationsService {
 			}));
 	}
 
+	forgotPassword(data:any){
+		return this.http.post(`${this.apiUrl}/auth/forget-password`, data);
+	
+	}
+
+	resetPassword(data:any){
+		return this.http.post(`${this.apiUrl}/auth/reset-password`, data);
+	
+	}
+
 	logout() {
     localStorage.removeItem('loginUser');
     localStorage.removeItem('access_token');

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 // import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 // import { AuthenticationsService } from '../../../core/services/authentications.service';
@@ -13,12 +14,14 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent implements OnInit {
   // loginForm: FormGroup;
   ipAddress: string;
-
+  returnUrl: string;
+  message: string
   constructor(
     // private fb: FormBuilder,
     // private authService: AuthenticationsService,
     // private socketService: SocketIoService,
     // private util: UtilityService
+    private route : ActivatedRoute
   ) {
     // fetch IP address
     // this.util.getIpAddress().subscribe((address: any) => this.ipAddress = address.ip);
@@ -32,6 +35,10 @@ export class LoginComponent implements OnInit {
     //   email: ['', [Validators.required]],
     //   password: ['', [Validators.required]]
     // });
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    if(this.returnUrl === '/forgot-password' || this.returnUrl === '/reset-password') this.message = this.route.snapshot.queryParams['message']
+    console.log(this.returnUrl)
+
   }
 
   // Login

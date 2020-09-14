@@ -1,12 +1,16 @@
 <div class="login-wrapper" fxLayout="row">
+
   <mat-card class="box">
+    <div *ngIf="message" class="alert alert-info">
+      {{ message}}
+   </div>
     <img src="assets/images/logo.svg" class="mb-3" alt="logo" />
     <mat-card-header class="justify-content-center">
       <mat-card-title>Login</mat-card-title>
     </mat-card-header>
     <h4 class="mb-0"> Welcome</h4>
     <p class="fnt-small">Login your Account </p>
-    <form class="login-form">
+    <!-- <form class="login-form"> -->
       <mat-card-content>
         <mat-form-field class="full-width">
           <input matInput placeholder="Email">
@@ -25,6 +29,6 @@
       <button mat-stroked-button class="btn-block w-100 vault-btn
         text-capitalize mt-2">log In with linkedin account</button>
       <p class="v-anchor mt-3">New Here ? <a routerLink="/register"><strong>Register</strong></a></p>
-    </form>
+    <!-- </form> -->
   </mat-card>
 </div>

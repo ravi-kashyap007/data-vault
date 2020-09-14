@@ -11,6 +11,7 @@ import { HttpConfigInterceptor } from './core/interceptor/http-config.intercepto
 import { LoginComponent } from './modules/auth/login/login.component';
 import { RegisterComponent } from './modules/auth/register/register.component';
 import { ForgotPasswordComponent } from './modules/auth/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './modules/auth/reset-password/reset-password.component';
 
 // import { MatInputModule } from '@angular/material/input';
 // import { MatButtonModule } from '@angular/material/button';
@@ -27,6 +28,8 @@ import { ForgotPasswordComponent } from './modules/auth/forgot-password/forgot-p
 // import { MatGridListModule } from '@angular/material/grid-list';
 // import { LayoutModule } from '@angular/cdk/layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { from } from 'rxjs';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -34,13 +37,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+    ReactiveFormsModule,
+    HttpClientModule
     // MatInputModule,
     // MatButtonModule,
     // MatCardModule,
