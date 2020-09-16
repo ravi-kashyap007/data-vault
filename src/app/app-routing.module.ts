@@ -7,6 +7,7 @@ import { ForgotPasswordComponent } from './modules/auth/forgot-password/forgot-p
 import { ResetPasswordComponent } from './modules/auth/reset-password/reset-password.component';
 import { WizardStepComponent } from './modules/auth/wizard-step/wizard-step.component';
 import { ConfirmPageComponent } from './modules/auth/confirm-page/confirm-page.component';
+import { AllSetComponent } from './modules/auth/all-set/all-set.component';
 
 const routes: Routes = [
   {
@@ -34,6 +35,9 @@ const routes: Routes = [
   },
   {
     path: 'thank-you', component: ConfirmPageComponent
+  },
+  {
+    path: 'all-set', component: AllSetComponent
   }
 ];
 

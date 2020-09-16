@@ -2,11 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './shared/material.module';
+import { MDBBootstrapModule, CarouselModule, WavesModule } from 'angular-bootstrap-md';
 
 import { AppComponent } from './app.component';
 import { HttpConfigInterceptor } from './core/interceptor/http-config.interceptor';
@@ -17,6 +18,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { ResetPasswordComponent } from './modules/auth/reset-password/reset-password.component';
 import { WizardStepComponent } from './modules/auth/wizard-step/wizard-step.component';
 import { ConfirmPageComponent } from './modules/auth/confirm-page/confirm-page.component';
+import { AllSetComponent } from './modules/auth/all-set/all-set.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { ConfirmPageComponent } from './modules/auth/confirm-page/confirm-page.c
     ForgotPasswordComponent,
     ResetPasswordComponent,
     WizardStepComponent,
-    ConfirmPageComponent
+    ConfirmPageComponent,
+    AllSetComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,10 @@ import { ConfirmPageComponent } from './modules/auth/confirm-page/confirm-page.c
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    CarouselModule,
+    WavesModule,
+    MDBBootstrapModule.forRoot()
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true },

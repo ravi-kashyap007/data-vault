@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 import { environment } from '../../../environments/environment';
 
@@ -25,7 +24,7 @@ export class AuthenticationsService {
   ) {
     if (localStorage.getItem('loginUser')) {
       this.loginCurrentUser = JSON.parse(localStorage.getItem('loginUser'));
-      this.userAccessToken = JSON.parse(localStorage.getItem('access_token'));
+      this.userAccessToken = localStorage.getItem('access_token');
     }
 
     this.currentUserSubject = new BehaviorSubject<any>(this.loginCurrentUser);
@@ -49,6 +48,12 @@ export class AuthenticationsService {
   setLoginUser(user) {
     localStorage.setItem('loginUser', JSON.stringify(user));
     this.currentUserSubject.next(user);
+  }
+
+  // Set user token
+  setUserToken(token) {
+    localStorage.setItem('access_token', token);
+    this.currentTokenSubject.next(token);
   }
 
   // Get Token
@@ -77,16 +82,7 @@ export class AuthenticationsService {
 
   // Login
   login(userData: any) {
-    return this.http.post<any>(`${this.apiUrl}/auth/login`, userData)
-      .pipe(map(user => {
-        if (user.statusCode === 200) {
-          localStorage.setItem('access_token', JSON.stringify(user.data.accessToken));
-          localStorage.setItem('loginUser', JSON.stringify(user.data));
-          this.currentUserSubject.next(user.data);
-          this.currentTokenSubject.next(user.data.accessToken);
-        }
-        return user;
-      }));
+    return this.http.post<any>(`${this.apiUrl}/auth/login`, userData, { observe: 'response' });
   }
 
   // logout user
@@ -99,17 +95,17 @@ export class AuthenticationsService {
 
   // Email Verification
   emailVerification(email) {
-    return this.http.get(`${this.apiUrl}/auth/verify-email/${email}`, {observe: 'response'});
+    return this.http.get(`${this.apiUrl}/auth/verify-email/${email}`, { observe: 'response' });
   }
 
   // Registration wizard step 1
   registrationStep1(payload) {
-    return this.http.post(`${this.apiUrl}/auth/registration-step1`, payload);
+    return this.http.post(`${this.apiUrl}/auth/registration-step1`, payload, { observe: 'response' });
   }
 
   // Registration wizard step 2
   registrationStep2(payload) {
-    return this.http.post(`${this.apiUrl}/auth/registration-step2`, payload);
+    return this.http.post(`${this.apiUrl}/auth/registration-step2`, payload, { observe: 'response' });
   }
 
   // Get business industries

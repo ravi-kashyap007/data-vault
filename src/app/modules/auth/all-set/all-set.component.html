@@ -1,0 +1,36 @@
+<div class="login-wrapper" fxLayout="row">
+  <mat-card class="box">
+    <div class="">
+      <img src="assets/images/logo.svg" class="mb-3" alt="logo" />
+    </div>
+    <img src="assets/images/tick1.svg" class="mb-3" alt="logo" />
+    <mat-card-header class="justify-content-center">
+      <mat-card-title>All Set</mat-card-title>
+    </mat-card-header>
+    <h4 class="mb-3">Introduction to Due Dash</h4>
+    <form class="login-form">
+      <mat-card-content>
+        <mdb-carousel class="carousel slide carousel-fade screens-slider"
+          [animation]="'fade'">
+          <mdb-carousel-item>
+            <img class="d-block w-100"
+              src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg"
+              alt="First slide">
+          </mdb-carousel-item>
+          <mdb-carousel-item>
+            <img class="d-block w-100"
+              src="https://mdbootstrap.com/img/Photos/Slides/img%20(6).jpg"
+              alt="Second slide">
+          </mdb-carousel-item>
+          <mdb-carousel-item>
+            <img class="d-block w-100"
+              src="https://mdbootstrap.com/img/Photos/Slides/img%20(9).jpg"
+              alt="Third slide">
+          </mdb-carousel-item>
+        </mdb-carousel>
+      </mat-card-content>
+      <button mat-stroked-button class="btn-block w-100 vault-btn
+        text-capitalize my-3" routerLink="/home">Go to home</button>
+    </form>
+  </mat-card>
+</div>

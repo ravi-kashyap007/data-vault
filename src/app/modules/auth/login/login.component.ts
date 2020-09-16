@@ -63,23 +63,63 @@ export class LoginComponent implements OnInit, OnDestroy {
   // Login
   login(): void {
     const loginValue = this.loginForm.value;
-    console.log('Payload: ', loginValue);
+    if (this.loginForm.valid) {
+      if (this.loginForm.get('email').value && this.loginForm.get('password').value) {
+        console.log('Payload: ', loginValue);
 
-    // Service call
-    this.subscription.push(
-      this.authService.login(loginValue).subscribe(res => {
-        const response = Object.assign({}, res.data);
-        console.log('Response: ', response);
+        // Service call
+        this.subscription.push(
+          this.authService.login(loginValue).subscribe(res => {
+            const response = Object.assign({}, res.body);
+            console.log('Success Response: ', response);
 
-        // checking Email verification
-        if (!response.verify_status && response.verify_status === 0) {
-          this.router.navigate(['thank-you']);
-        }
-        // this.router.navigate(['/']);
-      }, err => {
-        console.log('Response: ', err.error.errors);
-      })
-    );
+            // Email not found | password incorrect
+            if (response.statusCode === 400) {
+              this.util.toast(response.message);
+            }
+
+            // User not verified
+            if (response.statusCode === 401) {
+              this.util.toast(response.message);
+              // redirect to resend page
+            }
+
+            // Successfully login
+            if (response.statusCode === 200) {
+              // Pre-requistics
+              // For step 1
+              if ((!response.data.register_step1 || response.data.register_step1 === 0) &&
+                (!response.data.skip_register_step1 || response.data.skip_register_step1 === 0)) {
+                this.router.navigate(['wizard-steps'], { queryParams: { step: 1, _id: response.data.user_id } });
+              }
+
+              // For step 2
+              if ((!response.data.register_step2 || response.data.register_step2 === 0) &&
+                (!response.data.skip_register_step2 || response.data.skip_register_step1 === 0)) {
+                this.router.navigate(['wizard-steps'],
+                  { queryParams: { step: 2, _id: response.data.user_id, companyID: response.data.company_id } });
+              }
+
+              // All set
+              if (response.data.register_step1 === 1 && response.data.register_step2 === 1) {
+                // set login user
+                this.authService.setLoginUser(response.data);
+                // set user token
+                this.authService.setUserToken(response.data.accessToken);
+                // redirect to content
+                this.router.navigate(['home']);
+              }
+            }
+          }, err => {
+            console.log('Error Response: ', err.error.errors[0].password);
+            const message = err.error.errors[0].password ? err.error.errors[0].password : err.error.errors;
+            this.util.toast(message);
+          })
+        );
+      }
+    } else {
+      this.util.toast('please provide a required field.');
+    }
   }
 
   ngOnDestroy(): void {

@@ -9,7 +9,7 @@
           <mat-label>Business Industry</mat-label>
           <mat-select formControlName="business_industry">
             <mat-option *ngFor="let industry of industries"
-              [value]="industry.id">
+              [value]="industry.questions">
               {{industry.questions}}
             </mat-option>
           </mat-select>
@@ -19,7 +19,7 @@
           <mat-label>What’s Your Role?</mat-label>
           <mat-select formControlName="business_role">
             <mat-option *ngFor="let role of roles"
-            [value]="role.id">
+            [value]="role.questions">
             {{role.questions}}
           </mat-option>
           </mat-select>
@@ -37,24 +37,24 @@
   <mat-card class="box" *ngIf="wizardStep2">
     <img src="assets/images/logo.svg" class="mb-3" alt="logo" />
     <p class="fnt-small">Add team members </p>
-    <form class="login-form">
+    <form [formGroup]="wizardForm2" class="login-form">
       <mat-card-content>
         <mat-form-field class="full-width">
-          <input matInput placeholder="Email">
+          <input matInput placeholder="Email" formControlName="teamEmail1">
         </mat-form-field>
 
         <mat-form-field class="full-width">
-          <input matInput placeholder="Email">
+          <input matInput placeholder="Email" formControlName="teamEmail2">
         </mat-form-field>
 
         <mat-form-field class="full-width">
-          <input matInput placeholder="Email">
+          <input matInput placeholder="Email" formControlName="teamEmail3">
         </mat-form-field>
       </mat-card-content>
 
       <button mat-stroked-button class="btn-block w-100 vault-btn
-        text-capitalize my-3">Next</button>
-      <a href="" class="v-anchor color-grey">SKIP THIS STEP</a>
+        text-capitalize my-3" (click)="wizard2()">Next</button>
+      <a (click)="skipWizard2()" class="v-anchor color-grey">SKIP THIS STEP</a>
 
       <p class="v-anchor mt-3">Step 2/2 </p>
     </form>
