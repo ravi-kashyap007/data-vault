@@ -1,0 +1,62 @@
+<div class="login-wrapper" fxLayout="row">
+  <!-- step 1 -->
+  <mat-card class="box" *ngIf="wizardStep1">
+    <img src="assets/images/logo.svg" class="mb-3" alt="logo" />
+    <p class="fnt-small">Please fill in the information below </p>
+    <form [formGroup]="wizardForm1" class="login-form">
+      <mat-card-content>
+        <mat-form-field class="full-width">
+          <mat-label>Business Industry</mat-label>
+          <mat-select formControlName="business_industry">
+            <mat-option *ngFor="let industry of industries"
+              [value]="industry.id">
+              {{industry.questions}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <mat-label>What’s Your Role?</mat-label>
+          <mat-select formControlName="business_role">
+            <mat-option *ngFor="let role of roles"
+            [value]="role.id">
+            {{role.questions}}
+          </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-card-content>
+
+      <button mat-stroked-button class="btn-block w-100 vault-btn
+        text-capitalize my-3" (click)="wizard1()">Next</button>
+      <a (click)="skipWizard1()" class="v-anchor color-grey">SKIP THIS STEP</a>
+      <p class="v-anchor mt-3">Step 1/2 </p>
+    </form>
+  </mat-card>
+
+  <!-- step 2 -->
+  <mat-card class="box" *ngIf="wizardStep2">
+    <img src="assets/images/logo.svg" class="mb-3" alt="logo" />
+    <p class="fnt-small">Add team members </p>
+    <form class="login-form">
+      <mat-card-content>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Email">
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Email">
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Email">
+        </mat-form-field>
+      </mat-card-content>
+
+      <button mat-stroked-button class="btn-block w-100 vault-btn
+        text-capitalize my-3">Next</button>
+      <a href="" class="v-anchor color-grey">SKIP THIS STEP</a>
+
+      <p class="v-anchor mt-3">Step 2/2 </p>
+    </form>
+  </mat-card>
+</div>

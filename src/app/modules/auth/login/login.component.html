@@ -1,34 +1,47 @@
 <div class="login-wrapper" fxLayout="row">
-
   <mat-card class="box">
     <div *ngIf="message" class="alert alert-info">
-      {{ message}}
-   </div>
+      {{ message }}
+    </div>
     <img src="assets/images/logo.svg" class="mb-3" alt="logo" />
     <mat-card-header class="justify-content-center">
       <mat-card-title>Login</mat-card-title>
     </mat-card-header>
     <h4 class="mb-0"> Welcome</h4>
     <p class="fnt-small">Login your Account </p>
-    <!-- <form class="login-form"> -->
+    <form [formGroup]="loginForm" class="login-form">
       <mat-card-content>
         <mat-form-field class="full-width">
-          <input matInput placeholder="Email">
+          <input matInput placeholder="Email" formControlName="email">
         </mat-form-field>
+        <span *ngIf="f('email', 'required') && (f('email').touched ||
+          f('email').dirty)"
+          class="is-invalid">
+          The email field is required.
+        </span>
+        <span *ngIf="f('email', 'email')" class="is-invalid">
+          The email must be a valid email address.
+        </span>
 
         <mat-form-field class="full-width">
-          <input matInput placeholder="Password">
+          <input matInput type="password" placeholder="Password" formControlName="password">
         </mat-form-field>
+        <span *ngIf="f('password', 'required') && (f('password').touched ||
+          f('password').dirty)"
+          class="is-invalid">
+          The password field is required.
+        </span>
       </mat-card-content>
+
       <a routerLink="/forgot-password" class="v-anchor">Forgot Password</a>
       <button mat-stroked-button class="btn-block w-100 vault-btn
-        text-capitalize mt-3">Sign in</button>
+        text-capitalize mt-3" (click)="login()">Sign in</button>
       <p class="v-anchor mt-3">or</p>
       <button mat-stroked-button class="btn-block w-100 vault-btn
         text-capitalize">LOG in with google account</button>
       <button mat-stroked-button class="btn-block w-100 vault-btn
         text-capitalize mt-2">log In with linkedin account</button>
       <p class="v-anchor mt-3">New Here ? <a routerLink="/register"><strong>Register</strong></a></p>
-    <!-- </form> -->
+    </form>
   </mat-card>
 </div>

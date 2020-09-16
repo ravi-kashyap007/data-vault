@@ -1,7 +1,6 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
-@import '~@angular/material/theming';
+@import "~@angular/material/theming";
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -12,112 +11,470 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$data-vault-primary: mat-palette($mat-indigo);
-$data-vault-accent: mat-palette($mat-pink, A200, A100, A400);
+$DataVault-primary: mat-palette($mat-indigo);
+$DataVault-accent: mat-palette($mat-pink, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
-$data-vault-warn: mat-palette($mat-red);
+$DataVault-warn: mat-palette($mat-red);
 
-// Create the theme object. A theme consists of configurations for individual
-// theming systems such as "color" or "typography".
-$data-vault-theme: mat-light-theme((
-  color: (
-    primary: $data-vault-primary,
-    accent: $data-vault-accent,
-    warn: $data-vault-warn,
-  )
-));
+// Create the theme object (a Sass map containing all of the palettes).
+$DataVault-theme: mat-light-theme($DataVault-primary, $DataVault-accent, $DataVault-warn);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include angular-material-theme($data-vault-theme);
+@include angular-material-theme($DataVault-theme);
 
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import "~@angular/material/theming";
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$DataVault-primary: mat-palette($mat-indigo);
+$DataVault-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$DataVault-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$DataVault-theme: mat-light-theme($DataVault-primary, $DataVault-accent, $DataVault-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($DataVault-theme);
+// @import "./fonts.scss";
 /* You can add global styles to this file, and also import other style files */
-$black:#000;
+$black: #2e2f37;
 $white: #fff;
-$grey:#595959;
-$Text-color:#8493A8;
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-
-
-h4{
-    font-size: 1rem;
-    font-weight: 500;
-    color: $Text-color;
+$grey: #595959;
+$greyish: #adb9ca;
+$icon-color: #474949;
+$Text-color: #8493a8;
+html,
+body {
+  height: 100%;
 }
-img{
-    vertical-align: middle;
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.color-grey {
+  color: #8493a8 !important;
+}
+.color-greyish {
+  color: $greyish;
+}
+.icon-color {
+  color: $icon-color;
+}
+h4 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: $Text-color;
+}
+img {
+  vertical-align: middle;
 }
 
 a {
-    color: #2754ce;
-    text-decoration: none;
+  color: #2754ce;
+  text-decoration: none;
 }
-a:hover{
-    color: #FF7100;
+a:hover {
+  color: #ff7100;
+  text-decoration: none;
 }
-.fnt-small{
-    font-size: 12px;
-}
-
-.w-100{
-    width: 100%;
-}
-.vault-btn{
-    background: $grey;
-    border: 1px solid $grey;
-    box-sizing: border-box;
-    border-radius: 3px;
-    color: $white;
-}
-.text-uppercase{
-    text-transform: uppercase;
-}
-.text-capitalize{
-    text-transform: capitalize;
+.fnt-small {
+  font-size: 12px;
 }
 
-.mb-3{
-    margin-bottom: 1.2rem;
+.w-100 {
+  width: 100%;
 }
-.mt-3{
-    margin-top: 1.2rem !important;
+.vault-btn {
+  background: $grey;
+  border: 1px solid $grey;
+  box-sizing: border-box;
+  border-radius: 3px;
+  color: $white;
 }
-.mt-2{
-    margin-top: .8rem !important;
+.text-uppercase {
+  text-transform: uppercase;
 }
-.mb-0{
-    margin-bottom: 0 !important;
+.text-capitalize {
+  text-transform: capitalize;
+}
+.fs-lg {
+  font-size: 33px;
+}
+.fs-md {
+  font-size: 25px;
+}
+
+.mt-3 {
+  margin-top: 1.2rem !important;
+}
+
+.mt-2 {
+  margin-top: 0.8rem !important;
+}
+.mb-0 {
+  margin-bottom: 0 !important;
 }
 .justify-content-center {
-    justify-content: center;
+  justify-content: center;
 }
-.mat-card-content mat-form-field .mat-form-field-infix{
-    background: #FFFFFF;
-    border-radius: 6px;
-    font-family: Nunito;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 12px;
-    color: #564F4F;
-    padding: 5px 10px;
+.sidenav a {
+  text-align: center;
+  .mat-list-item-content {
+    justify-content: center;
+  }
+}
+.sidenav a.active {
+  background: rgb(255 130 32 / 0.1);
+  span {
+    color: #ff7100;
+  }
+}
+.icon-wrap {
+  position: relative;
+  select {
+    background: #ffffff;
+    border: 1px solid #e9ecf4;
+    box-sizing: border-box;
+    border-radius: 5px;
     font-family: Roboto, "Helvetica Neue", sans-serif;
+    position: relative;
+  }
+}
+.select-arrow:after {
+  content: "\e902";
+  font-family: "icomoon" !important;
+  position: absolute;
+  right: 15px;
+  width: 15px;
+  height: 15px;
+  display: block;
+  top: 14px;
+  font-size: 11px;
+  color: #8493a8;
+}
+.mat-card-content mat-form-field .mat-form-field-infix {
+  background: #ffffff;
+  border-radius: 6px;
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  color: #564f4f;
+  padding: 5px 10px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 .mat-drawer-container {
-    width: 75px; 
-    float: left;
+  width: 75px;
+  float: left;
 }
-.mat-toolbar-row, .mat-drawer-inner-container .mat-toolbar-single-row {
-    padding: 0 10px;
+.mat-toolbar-row,
+.mat-drawer-inner-container .mat-toolbar-single-row {
+  padding: 0 10px;
 }
-.m-lft{
-    margin-left: 75px !important;
+.m-lft {
+  margin-left: 75px !important;
 }
-.pl-2{
-    padding-left: 1.3rem;
+.pl-2 {
+  padding-left: 1.3rem;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.search-ico {
+  position: absolute;
+  left: 12px;
+  top: 6px;
+  color: #dcdcdc;
+}
+.form-inline .form-control {
+  border: 1px solid #e9ecf4;
+  border-radius: 10px;
+  padding: 18px 8px;
+  padding-left: 1.8rem !important;
+  color: #d0d0dd;
+}
+.form-inline .form-control::placeholder {
+  color: #d0d0dd;
+}
+.form-inline .form-control::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: #d0d0dd;
+}
+.form-inline .form-control::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #d0d0dd;
+}
+.form-inline .form-control:-ms-input-placeholder {
+  /* IE 10+ */
+  color: #d0d0dd;
+}
+.form-inline .form-control:-moz-placeholder {
+  /* Firefox 18- */
+  color: #d0d0dd;
+}
+.color-black {
+  color: $black;
+}
+a.notification-ico {
+  position: relative;
+}
+.notification-ico::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ec2323;
+  right: 13px;
+  top: 0px;
+}
+.lft-tab {
+  .mat-expansion-panel {
+    background: #f7f9fe;
+    border-radius: 15px !important;
+
+    box-shadow: none;
+  }
+  .mat-expansion-panel-header-title,
+  .mat-expansion-panel-header-description {
+    flex-wrap: wrap;
+    margin-right: 0;
+  }
+  .mat-expansion-panel-header {
+    height: auto !important;
+    padding: 0;
+  }
+  .mat-expansion-panel-body {
+    padding: 0;
+  }
+  .mat-expansion-panel:hover {
+    background: #fff !important;
+    border: 2px solid #ff7100;
+  }
+  .mat-expansion-panel.mat-expanded {
+    background: #ff7100;
+  }
+  .mat-expansion-panel.mat-expanded p,
+  .mat-expansion-panel.mat-expanded span {
+    color: #fff;
+  }
+  .mat-expansion-panel.mat-expanded:hover p,
+  .mat-expansion-panel.mat-expanded:hover span {
+    color: $black;
+  }
+  .mat-expansion-panel.mat-expanded:hover span.dtl {
+    color: #7e828c;
+  }
+  .mat-expansion-panel.mat-expanded:hover .a-tab span[class*="icon"] {
+    color: $greyish;
+  }
+
+  .mat-expansion-panel .mat-expansion-panel-header.cdk-keyboard-focused:not([aria-disabled="true"]),
+  .mat-expansion-panel .mat-expansion-panel-header.cdk-program-focused:not([aria-disabled="true"]),
+  .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:hover:not([aria-disabled="true"]) {
+    background: none;
+  }
+}
+.expansion-con {
+  border-top: 2px solid #f9eae3;
+  padding: 10px 24px;
+  display: none;
+  width: 100%;
+}
+.lft-tab .mat-expansion-panel:hover .expansion-con {
+  display: block;
+}
+.con-header {
+  padding: 15px 20px;
+  border-bottom: 1px solid #d0d9e6;
+}
+// .left-bar{
+//     // height: 730px;
+// }
+.a-tab {
+  color: $black;
+  width: 100%;
+  padding: 13px 24px;
+  span.dtl {
+    color: #7e828c;
+  }
+}
+.tab-content-wrap {
+  background: #f7f9fe;
+  border-radius: 15px;
+  height: 610px;
+  margin-top: 3rem;
+}
+.EmptyDiv {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  color: $black;
+  width: 100%;
+  height: 100%;
+}
+.EmptyInner {
+  text-align: center;
+}
+.dash-tab.mat-tab-group {
+  height: 515px;
+  margin-top: 1.5rem;
+
+  .mat-tab-label-container {
+    padding: 0 30px;
+  }
+  .mat-tab-body-wrapper {
+    width: 95%;
+    height: 95%;
+    background-color: #fff;
+    margin: auto;
+    padding: 20px 25px;
+    overflow-y: scroll;
+  }
+  .mat-tab-label {
+    background: #d0d9e5;
+    border: 1px solid transparent;
+    border-radius: 3px 3px 0px 0px;
+    height: 30px;
+    padding: 0 15px;
+    min-width: 100px;
+  }
+  .mat-tab-label:first-child {
+    margin-right: 1.2rem;
+  }
+  .mat-tab-label-active {
+    background: #ffffff;
+    border: 1px solid #d0d9e5;
+    border-radius: 3px 3px 0px 0px;
+    border-bottom: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+  }
+}
+.mat-tab-body-wrapper::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+
+.mat-tab-body-wrapper::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+
+.mat-tab-body-wrapper::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+
+.mat-tab-body-wrapper::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+.screens-slider {
+  .carousel-indicators {
+    display: none;
+  }
+}
+.icons {
+  font-size: 20px;
+  color: #1845b9;
+  vertical-align: bottom;
+}
+.thank-wrap {
+  .mat-card-header-text {
+    margin: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .visible-sm {
+    display: none !important;
+  }
+}
+@media (max-width: 992px) {
+  .icon-wrap select.w-25 {
+    width: 35% !important;
+  }
+  .ml-4,
+  .mx-4 {
+    margin-left: 0.4rem !important;
+  }
+  .a-tab {
+    padding: 13px 18px;
+  }
+  .fs-lg {
+    font-size: 28px;
+  }
+  .mat-h1,
+  .mat-headline,
+  .mat-typography h1 {
+    font: 400 18px/32px Roboto, "Helvetica Neue", sans-serif;
+  }
+  .w-50 {
+    width: 45% !important;
+  }
+}
+@media (max-width: 767px) {
+  .hide-sm,
+  .sidenav-container,
+  .mat-drawer-content {
+    display: none !important;
+  }
+  .m-lft {
+    margin-left: 0px !important;
+  }
+  .bg-grey {
+    background: #f7f9fe;
+  }
+}
+@media (max-width: 576px) {
+  .icon-wrap select.w-25 {
+    width: 55% !important;
+  }
+}
+@media (max-width: 420px) {
+  .con-header {
+    display: inline-block;
+  }
+  .con-header > div {
+    margin-top: 15px;
+  }
+  .ml-4,
+  .mx-4 {
+    margin-left: 0.6rem !important;
+  }
+}
+
+
+
+// Temp Css
+
+.is-invalid { 
+  color: #ff0000;
+  float: left;
+  text-align: left;
+}
+
+button:disabled,
+button[disabled]{
+  cursor: not-allowed !important;
+  color: white;
+  opacity: 0.5;
+}

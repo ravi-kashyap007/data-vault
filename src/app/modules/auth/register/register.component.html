@@ -1,44 +1,102 @@
-<div class="login-wrapper" fxLayout="row" >
-    <mat-card class="box">
-      <img src="assets/images/logo.svg" class="mb-3" alt="logo" />
-      <mat-card-header class="justify-content-center">
-        <mat-card-title>Register</mat-card-title>
-        
-      </mat-card-header>
-      <h4 class="mb-0">Hello</h4>
-      <p class="fnt-small">Create your Account</p>
-  
-      <form class="login-form">
-  
-        <mat-card-content>
-          <mat-form-field class="full-width">
-            <input matInput placeholder="Username">
-          </mat-form-field>
-          <mat-form-field class="full-width">
-            <input matInput placeholder="Business Name">
-          </mat-form-field>
-          <mat-form-field class="full-width">
-            <input matInput placeholder="Mobile No.">
-          </mat-form-field>
-          <mat-form-field class="full-width">
-            <input matInput placeholder="Email">
-          </mat-form-field>
-  
-          <mat-form-field class="full-width">
-            <input matInput placeholder="Password">
-          </mat-form-field>
-          <mat-form-field class="full-width">
-            <input matInput placeholder="Confirm Password">
-          </mat-form-field>
-        </mat-card-content>
-        
-        <button mat-stroked-button class="btn-block w-100 vault-btn text-uppercase mt-3">Register</button>
-        <p class="v-anchor  mt-3">or</p>
-        <button mat-stroked-button class="btn-block w-100 vault-btn text-uppercase ">LOG in with google account</button>
-        <button mat-stroked-button class="btn-block w-100 vault-btn text-uppercase mt-2">log IN with linkedin account</button>
-        <p class="v-anchor  mt-3">Already with us? <a routerLink="/login"><strong>Sign in</strong></a></p>
-      </form>
-    </mat-card>
-  </div>
-  
-  
+<div class="login-wrapper" fxLayout="row">
+  <mat-card class="box">
+    <img src="assets/images/logo.svg" class="mb-3" alt="logo" />
+    <mat-card-header class="justify-content-center">
+      <mat-card-title>Register</mat-card-title>
+    </mat-card-header>
+    <h4 class="mb-0">Hello</h4>
+    <p class="fnt-small">Create your Account</p>
+    <form [formGroup]="registrationForm" class="login-form">
+      <mat-card-content>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="First Name" formControlName="first_name">
+        </mat-form-field>
+        <span *ngIf="registrationForm.get('first_name').hasError('required') &&
+          (registrationForm.get('first_name').touched ||
+          registrationForm.get('first_name').dirty)" class="is-invalid">
+          The first name field is required.
+        </span>
+
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Last Name" formControlName="last_name">
+        </mat-form-field>
+        <span *ngIf="registrationForm.get('last_name').hasError('required') &&
+          (registrationForm.get('last_name').touched ||
+          registrationForm.get('last_name').dirty)" class="is-invalid">
+          The last name field is required.
+        </span>
+
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Email" formControlName="email">
+        </mat-form-field>
+        <span *ngIf="registrationForm.get('email').hasError('required') &&
+          (registrationForm.get('email').touched ||
+          registrationForm.get('email').dirty)" class="is-invalid">
+          The email field is required.
+        </span>
+        <span *ngIf="registrationForm.get('email').hasError('email')"
+          class="is-invalid">
+          The email must be a valid email address.
+        </span>
+
+        <mat-form-field class="full-width">
+          <input matInput type="password" placeholder="Password"
+            formControlName="password">
+        </mat-form-field>
+        <span *ngIf="registrationForm.get('password').hasError('required') &&
+          (registrationForm.get('password').touched ||
+          registrationForm.get('password').dirty)" class="is-invalid">
+          The password field is required.
+        </span>
+        <span *ngIf="!registrationForm.get('password').hasError('required') &&
+          registrationForm.get('password').hasError('isPassword')"
+          class="is-invalid">
+          <ul>
+            <li>must be atleast 8 characters!</li>
+            <li>must contain atleast 1 in UPPER CASE!</li>
+            <li>must contain atleast 1 letter in lower case!</li>
+            <li>must contain atleast 1 number!</li>
+            <li>must contain atleast 1 special character!</li>
+          </ul>
+        </span>
+
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Confirm Password" type="password"
+            formControlName="confirmPassword">
+        </mat-form-field>
+        <span
+          *ngIf="registrationForm.get('confirmPassword').hasError('required') &&
+          (registrationForm.get('confirmPassword').touched ||
+          registrationForm.get('confirmPassword').dirty)" class="is-invalid">
+          The confirm password field is required.
+        </span>
+        <span
+          *ngIf="!registrationForm.get('confirmPassword').hasError('required')
+          && registrationForm.hasError('isPasswordMatch')"
+          class="is-invalid">
+          please make sure your passwords match.
+        </span>
+      </mat-card-content>
+
+      <button mat-stroked-button class="btn-block w-100 vault-btn text-uppercase
+        mt-3" [disabled]="registrationForm.invalid" (click)="register()">
+        Register
+      </button>
+      <p class="v-anchor mt-3">or</p>
+      <button mat-stroked-button class="btn-block w-100 vault-btn
+        text-uppercase">
+        LOG in with google account
+      </button>
+      <button mat-stroked-button class="btn-block w-100 vault-btn text-uppercase
+        mt-2">
+        log IN with linkedin account
+      </button>
+      <p class="v-anchor mt-3">
+        Already with us?
+        <a routerLink="/login">
+          <strong>Sign in</strong>
+        </a>
+      </p>
+    </form>
+  </mat-card>
+</div>
