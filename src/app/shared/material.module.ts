@@ -15,6 +15,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSelectModule } from '@angular/material/select';
+import {MatExpansionModule} from '@angular/material/expansion';
+
 
 
 @NgModule({
@@ -33,7 +35,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatTabsModule,
     MatGridListModule,
     LayoutModule,
-    MatSelectModule
+    MatSelectModule,
+    MatExpansionModule
   ],
   exports: [
     MatInputModule,
@@ -51,7 +54,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatGridListModule,
     MatSnackBarModule,
     LayoutModule,
-    MatSelectModule
+    MatSelectModule,
+    MatExpansionModule
   ]
 })
 export class MaterialModule { }

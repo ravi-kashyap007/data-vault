@@ -3,14 +3,11 @@ import { CommonModule, DatePipe } from '@angular/common';
 
 @NgModule({
   providers: [],
-  declarations: [
-
-  ],
+  declarations: [],
   imports: [
     CommonModule,
   ],
   exports: [
-
   ],
   entryComponents: []
 })
