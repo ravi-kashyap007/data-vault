@@ -148,7 +148,7 @@ export class WizardStepComponent implements OnInit, OnDestroy {
   // Skip wizard 1
   skipWizard1(): void {
     const payload = {
-      id: 48,
+      id: this._id,
       buisness_industry: '',
       business_role: '',
       skip_register_step1: true,
