@@ -1,0 +1,18 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav class="sidenav" fixedInViewport
+        [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+        [mode]="(isHandset$ | async) ? 'over' : 'side'"
+        [opened]="(isHandset$ | async) === false">
+      <mat-toolbar><img src="assets/images/logo.svg" class="mb-3" alt="logo" /></mat-toolbar>
+      <mat-nav-list>
+        <a mat-list-item> <span class="icon-dashboard  fs-md color-greyish"></span> </a>
+        <a mat-list-item class="active">  <span class="icon-folder fs-md color-greyish"></span> </a>
+        <a mat-list-item > <span class="icon-file-cabinet fs-md color-greyish"></span>  </a>
+        <a mat-list-item > <span class="icon-people fs-md color-greyish"></span> </a>
+        <a mat-list-item > <span class="icon-contacts fs-md color-greyish"></span>  </a>
+        <a mat-list-item > <span class="icon-share fs-md color-greyish"></span>  </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    
+  </mat-sidenav-container>
+  

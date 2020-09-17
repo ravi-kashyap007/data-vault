@@ -107,7 +107,7 @@ export class LoginComponent implements OnInit, OnDestroy {
                 // set user token
                 this.authService.setUserToken(response.data.accessToken);
                 // redirect to content
-                this.router.navigate(['home']);
+                this.router.navigate(['/content']);
               }
             }
           }, err => {
