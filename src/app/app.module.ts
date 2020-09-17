@@ -7,6 +7,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { ContentModule } from './modules/content/content.module';
 
 import { AppComponent } from './app.component';
 
@@ -25,6 +26,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     AppRoutingModule,
     AuthModule,
+    ContentModule,
     FormsModule,
     ReactiveFormsModule,
     // CarouselModule,

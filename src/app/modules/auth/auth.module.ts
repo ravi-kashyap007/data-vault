@@ -14,8 +14,6 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { WizardStepComponent } from './wizard-step/wizard-step.component';
 import { ConfirmPageComponent } from './confirm-page/confirm-page.component';
 import { AllSetComponent } from './all-set/all-set.component';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -29,8 +27,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   imports: [
     CommonModule,
-    BrowserModule,
-    BrowserAnimationsModule,
     AuthRoutingModule,
     FormsModule,
     ReactiveFormsModule,
